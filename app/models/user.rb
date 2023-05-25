@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   with_options presence: true, format: { with: /\A[ァ-ヴー]+\z/, message: '全角カタカナを使用してください' } do
     validates :last_name_Kana
-    validates :fitst_name_Kana
+    validates :first_name_Kana
   end
 
   has_many :items
