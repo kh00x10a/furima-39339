@@ -25,13 +25,13 @@
 | ------------------------------- | ----------- | --------------------------------- |
 | name                            | string      | null: false                       |
 | explanation                     | text        | null: false                       |
-| category_id                     | integer     | null: false, foreign_key: true    |
-| condition_id                    | integer     | null: false, foreign_key: true    |
-| shipping_fee_responsibility_id  | integer     | null: false, foreign_key: true    |
-| shipping_origin_region_id       | integer     | null: false, foreign_key: true    |
-| shipping_days_id                | integer     | null: false, foreign_key: true    |
-| price                           | integer     | null: false, foreign_key: true    |
-| user_id                         | references  | null: false, foreign_key: true    |
+| category_id                     | integer     | null: false                       |
+| condition                       | integer     | null: false                       |
+| shipping_fee_responsibility     | integer     | null: false                       |
+| prefecture                      | integer     | null: false                       |
+| shipping_days                   | integer     | null: false                       |
+| price                           | integer     | null: false                       |
+| user                            | references  | null: false, foreign_key: true    |
 
 ### Association
 
@@ -40,16 +40,16 @@
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :shipping_fee_responsibility
-- belongs_to_active_hash :shipping_origin_region
+- belongs_to_active_hash :prefecture
 - belongs_to_active_hash :shipping_days
 
 
 ## purchase_records テーブル
 
 | Column                  | Type        |  Options                          |
-| ----------------------- | -----       | --------------------------------- |
-| item_id                 | references  | null: false, foreign_key: true    |
-| user_id                 | references  | null: false, foreign_key: true    |
+| ----------------------- | ----------- | --------------------------------- |
+| item                    | references  | null: false, foreign_key: true    |
+| user                    | references  | null: false, foreign_key: true    |
 
 ### Association
 
@@ -62,12 +62,12 @@
 | Column                  | Type        |  Options                          |
 | ----------------------- | ----------- | --------------------------------- |
 | post_code               | string      | null: false                       |
-| prefecture_id           | integer     | null: false, foreign_key: true    |
+| prefecture              | integer     | null: false                       |
 | city                    | string      | null: false                       |
 | street_address          | string      | null: false                       |
 | building_name           | string      |                                   |
 | phone_number            | string      | null: false                       |
-| purchase_record_id      | references  | null: false, foreign_key: true    |
+| purchase_record         | references  | null: false, foreign_key: true    |
 
 ### Association
 
