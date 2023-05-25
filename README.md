@@ -29,7 +29,7 @@
 | condition_id                    | integer     | null: false                       |
 | shipping_fee_responsibility_id  | integer     | null: false                       |
 | prefecture_id                   | integer     | null: false                       |
-| shipping_days_id                | integer     | null: false                       |
+| shipping_day_id                 | integer     | null: false                       |
 | price                           | integer     | null: false                       |
 | user                            | references  | null: false, foreign_key: true    |
 
@@ -41,7 +41,7 @@
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :shipping_fee_responsibility
 - belongs_to_active_hash :prefecture
-- belongs_to_active_hash :shipping_days
+- belongs_to_active_hash :shipping_day
 
 
 ## purchase_records テーブル
