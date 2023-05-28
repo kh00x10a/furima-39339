@@ -36,6 +36,10 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+
+    def destroy
+      
+    end
   end
 
 
