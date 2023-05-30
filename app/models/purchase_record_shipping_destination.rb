@@ -1,5 +1,5 @@
 class PurchaseRecordShippingDestination
-  include ActiveMedel::module 
+  include ActiveModel::Model
   attr_accessor :user_id, :item_id, :post_code, :prefecture, :city, :street_address, :building_name, :phone_number
     
   with_options presence:true do

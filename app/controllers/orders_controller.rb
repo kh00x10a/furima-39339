@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @purchase_record_shipping_destination = PurchaseRecordShippingDestination.new(purchase_params)
+    @purchase_record_shipping_destination = PurchaseRecordShippingDestination.new(purchase_record_params)
     if @purchase_record_shipping_destination.valid?
       @purchase_record_shipping_destination.save
       redirect_to root_path
