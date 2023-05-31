@@ -10,7 +10,7 @@ RSpec.describe PurchaseRecordShippingDestination, type: :model do
       @purchase_record_shipping_destination = FactoryBot.build(:purchase_record_shipping_destination, user_id: user.id, item_id: item.id)
     end
     context '商品が購入できる場合' do
-      it 'post_code、prefecture_id、city、street_address、building_name、phone_number、user_id、item_idが存在すれば購入できる' do
+      it 'post_code、prefecture_id、city、street_address、building_name、phone_number、user_id、item_id、tokenが存在すれば購入できる' do
         expect(@purchase_record_shipping_destination).to be_valid
       end
       it 'building_nameが空でも購入できる' do
@@ -19,6 +19,11 @@ RSpec.describe PurchaseRecordShippingDestination, type: :model do
       end
     end
     context '商品が購入できない場合' do
+      it 'tokenが空では購入できない' do
+        @purchase_record_shipping_destination.token = ''
+        @purchase_record_shipping_destination.valid?
+        expect(@purchase_record_shipping_destination.errors.full_messages).to include("Token can't be blank")
+      end
       it 'post_codeが空では購入できない' do
         @purchase_record_shipping_destination.post_code = ''
         @purchase_record_shipping_destination.valid?

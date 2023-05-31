@@ -1,6 +1,6 @@
 class PurchaseRecordShippingDestination
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number
+  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :token
     
 
   with_options presence:true do
@@ -11,6 +11,8 @@ class PurchaseRecordShippingDestination
     validates :street_address, presence: true, format: { with: /\A[0-9\-ーぁ-んァ-ン一-龥]+\z/, message: "は数字とハイフン、漢字、ひらがな、カタカナのみ入力してください" }
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "は10桁以上11桁以内の半角数値で入力してください" }
   end
+
+  validates :token, presence: true
 
   validates :prefecture_id,  numericality: { other_than: 1 , message: "can't be blank"}
 
