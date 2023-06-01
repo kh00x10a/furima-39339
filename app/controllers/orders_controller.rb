@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
       params.require(:purchase_record_shipping_destination).permit(:post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
     end
 
-    def set_image
+    def set_item
       @item = Item.find(params[:item_id])
     end
     
