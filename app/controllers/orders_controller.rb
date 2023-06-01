@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   def index
     @purchase_record_shipping_destination = PurchaseRecordShippingDestination.new
     if user_signed_in?
-      if (current_user != @item.user && @item.purchase_record.present?) || current_user == @item.user
+      if current_user == @item.user || @item.purchase_record.present?
         redirect_to root_path
       end
     else
