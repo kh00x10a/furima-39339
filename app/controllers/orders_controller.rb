@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase_record_shipping_destination = PurchaseRecordShippingDestination.new
     if user_signed_in?
       if (current_user != @item.user && @item.purchase_record.present?) || current_user == @item.user
@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_record_shipping_destination = PurchaseRecordShippingDestination.new(purchase_record_params)
     if @purchase_record_shipping_destination.valid?
       pay_item
@@ -27,6 +26,10 @@ class OrdersController < ApplicationController
   private
     def purchase_record_params
       params.require(:purchase_record_shipping_destination).permit(:post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    end
+
+    def set_image
+      @item = Item.find(params[:item_id])
     end
     
     def pay_item
