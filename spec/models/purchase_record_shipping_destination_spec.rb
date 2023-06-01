@@ -62,17 +62,17 @@ RSpec.describe PurchaseRecordShippingDestination, type: :model do
       it 'street_addressに半角英字が入っていると購入できない' do
         @purchase_record_shipping_destination.street_address = 'saitama1-1-1'
         @purchase_record_shipping_destination.valid?
-        expect(@purchase_record_shipping_destination.errors.full_messages).to include("Street address は数字とハイフン、漢字、ひらがな、カタカナのみ入力してください")
+        expect(@purchase_record_shipping_destination.errors.full_messages).to include("Street address は半角数字とハイフン、漢字、ひらがな、カタカナのみ入力してください")
       end
       it 'street_addressに全角ハイフンが入っていると購入できない' do
         @purchase_record_shipping_destination.street_address = 'さいたま1―1―1'
         @purchase_record_shipping_destination.valid?
-        expect(@purchase_record_shipping_destination.errors.full_messages).to include("Street address は数字とハイフン、漢字、ひらがな、カタカナのみ入力してください")
+        expect(@purchase_record_shipping_destination.errors.full_messages).to include("Street address は半角数字とハイフン、漢字、ひらがな、カタカナのみ入力してください")
       end
       it 'street_addressに全角数字が入っていると購入できない' do
         @purchase_record_shipping_destination.street_address = 'さいたま１-１-１'
         @purchase_record_shipping_destination.valid?
-        expect(@purchase_record_shipping_destination.errors.full_messages).to include("Street address は数字とハイフン、漢字、ひらがな、カタカナのみ入力してください")
+        expect(@purchase_record_shipping_destination.errors.full_messages).to include("Street address は半角数字とハイフン、漢字、ひらがな、カタカナのみ入力してください")
       end
       it 'phone_numberが空では購入できない' do
         @purchase_record_shipping_destination.phone_number = ''
