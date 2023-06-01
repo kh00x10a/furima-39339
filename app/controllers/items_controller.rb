@@ -26,6 +26,8 @@ class ItemsController < ApplicationController
       redirect_to new_user_session_path
     elsif current_user != @item.user
       redirect_to root_path
+    elsif @item.purchase_record.present?
+      redirect_to root_path
     end
   end
 
