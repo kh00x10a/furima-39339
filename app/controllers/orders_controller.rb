@@ -1,14 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: :index
   before_action :set_item, only: [:index, :create]
 
   def index
     @purchase_record_shipping_destination = PurchaseRecordShippingDestination.new
-    if user_signed_in?
-      if current_user == @item.user || @item.purchase_record.present?
-        redirect_to root_path
-      end
-    else
-      redirect_to new_user_session_path
+    if current_user == @item.user || @item.purchase_record.present?
+      redirect_to root_path
     end
   end
 
